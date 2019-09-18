@@ -1,4 +1,9 @@
-class ShowController < ApplicationController
+class GuesthousesController < ApplicationController
   def top
+    
+  end
+
+  def recruit
+    
   end
 end

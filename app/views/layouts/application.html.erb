@@ -13,9 +13,22 @@
   
     <header>
       <div class="header_top">
-        <%= link_to('Graduateapp','/') %>
-        <%= link_to('ログイン','/users/again') %>
-        <%= link_to('新規登録','/users/new') %>
+
+        <% if @current_user %>
+          <%= link_to('Graduateapp','/guesthouses/top') %>
+        <% else %>  
+          <%= link_to('Graduateapp','/') %>
+        <% end %>
+
+        <% if @current_user %>
+          <%= link_to('募集','/guesthouses/recruit')%>
+          <%= link_to(@current_user.name,'/users/new')%>
+          <%= link_to('ログアウト','/users/logout', method: :post) %>
+        <% else %>
+          <%= link_to('ログイン','/users/again') %>
+          <%= link_to('新規登録','/users/new') %>
+        <% end %>
+
       </div>
     </header>
 

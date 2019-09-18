@@ -5,12 +5,26 @@ class UsersController < ApplicationController
         email: params[:email], 
         password: params[:password],
         )
+
     end
 
     def again
       
     end
 
+    def update
+        @user = User.find_by(id: params[:id])
+        @user.name = params[:name]
+        @user.email = params[:email]
+        
+        if @user.save
+          flash[:notice] = "ユーザー情報を編集しました"
+          redirect_to("/guesthouses/top")
+        else
+          render("users/new")
+        end
+    end
+    
     def create
         @user = User.new(
         name: params[:name], 
@@ -18,8 +32,9 @@ class UsersController < ApplicationController
         password: params[:password],
         )
         if  @user.save
+            session[:user_id] = @user.id
             flash[:notice] = "ユーザー登録が完了しました"
-            redirect_to("/guesthouses/#{@user.id}")
+            redirect_to("/guesthouses/top")
         else
             flash[:notice]="正しく記入してください"
             render("users/new")
@@ -27,11 +42,11 @@ class UsersController < ApplicationController
     end
 
     def login
-        @user = User.find_by(email: params[:email])
-        if @user && @user.authenticate(params[:password])
+        @user = User.find_by(email: params[:email], password: params[:password])
+        if @user
             session[:user_id] = @user.id
             flash[:notice] = "ログインしました"
-            redirect_to("/guesthouses/#{@user.id}")
+            redirect_to("/guesthouses/top")
         else
             flash[:notice]="メールアドレスまたはパスワードが間違っています"
             @email = params[:email]
@@ -41,7 +56,9 @@ class UsersController < ApplicationController
     end
 
     def edit
-        @user = User.find_by(id: params[:id])
+        @user = User.find_by(
+        id: params[:id],
+        )
     end
 
     def update
@@ -50,10 +67,17 @@ class UsersController < ApplicationController
         @user.email = params[:email]
         if @user.save
           flash[:notice] = "ユーザー情報を編集しました"
-          redirect_to("/users/#{@user.id}")
+          redirect_to("/users/#{@user.id}/top")
         else
           render("users/edit")
         end
+    end
+
+
+    def logout
+        session[:user_id] = nil
+        flash[:notice] = "ログアウトしました"
+        redirect_to("/users/again")
     end
 
 end
