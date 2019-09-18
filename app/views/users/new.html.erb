@@ -1,6 +1,6 @@
 <div class="new_all">
     <%= flash[:notice] %>
-    <%= form_tag("/users/create") do %>
+    <%= form_with url:("/users/create") do |f| %>
         <h3>名前</h3>
             <input name="name" value="<%= @user.name %>" >
         <h3>メールアドレス</h3>

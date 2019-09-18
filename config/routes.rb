@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post "users/logout" => "users#logout"
   post "users/:id/update" => "users#update"
   get "users/:id/edit" => "users#edit"
+  get 'users/login' => 'users#login'
   post 'users/login' => 'users#login'
   post 'users/create' => 'users#create'
   get 'users/new' => 'users#new'

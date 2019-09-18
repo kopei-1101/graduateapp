@@ -1,4 +1,6 @@
 class Guesthouse < ApplicationRecord
+    validates :appeal, {presence: true, length: {maximum: 140}}
+    mount_uploader :image, ImageUploader
     def self.prefectures
     [
     '北海道',

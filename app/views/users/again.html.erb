@@ -1,7 +1,7 @@
 
 <div class="log">
     <%= flash[:notice] %>
-    <%= form_tag("/users/login") do %>
+    <%= form_with url:("/users/login") do |f| %>
         <h3>メールアドレス</h3>
             <input name="email" value="<%= @email %>">
         <h3>パスワード<h3>
