@@ -1,0 +1,12 @@
+<div class="new_all">
+    <%= flash[:notice] %>
+    <%= form_tag("/users/create") do %>
+        <h3>名前</h3>
+            <input name="name" value="<%= @user.name %>" >
+        <h3>メールアドレス</h3>
+            <input name="email"  value="<%= @user.email %>">
+        <h3>パスワード</h3>
+            <input type="password" name="password" value="<%= @user.password %>">
+        <input type='submit' value='新規登録'>
+    <% end %>
+</div>
