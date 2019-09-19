@@ -26,7 +26,7 @@ class UsersController < ApplicationController
         if  @user.save
             session[:user_id] = @user.id
             flash[:notice] = "ユーザー登録が完了しました"
-            redirect_to("/guesthouses/top")
+            redirect_to("/users/sign_in")
         else
             flash[:notice]="正しく記入してください"
             redirect_to("/users/new")

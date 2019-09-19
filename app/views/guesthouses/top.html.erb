@@ -1,5 +1,7 @@
 <% @guesthouse.each do |guesthouse| %>
-    <div class="posts-index-item">
-      <%= guesthouse %>
-    </div>
+  <p>住所</p>
+  <%= guesthouse.prefecture %>
+  <%= guesthouse.city %>
+  <%= guesthouse.address %>
+  <p><%= guesthouse.appeal %></p>
 <% end %>

@@ -14,7 +14,7 @@ class GuesthousesController < ApplicationController
       appeal: params[:appeal],
       prefecture: params[:prefecture]
       )
-      if @guesthouse.save!
+      if @guesthouse.save
         flash[:notice] ="募集中です"
         redirect_to("/guesthouses/top")
       else

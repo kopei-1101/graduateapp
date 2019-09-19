@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "users/:id/new" => "users#new"
   
   post 'guesthouses/create' => 'guesthouses#create'
+  get 'guesthouses/:id/top' => 'guesthouses#top'
   get 'guesthouses/top' => 'guesthouses#top'
   post 'guesthouses/recruit' => 'guesthouses#recruit'
   get 'guesthouses/recruit' => 'guesthouses#recruit'
