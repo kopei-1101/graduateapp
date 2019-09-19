@@ -10,7 +10,6 @@
   </head>
 
   <body>
-  
     <header>
       <div class="header_top">
 
@@ -22,9 +21,11 @@
 
         <% if @current_user %>
           <%= link_to('募集','/guesthouses/recruit')%>
-          <%= link_to(@current_user.name,'/users/new')%>
+          <%= link_to(@current_user.name,'/users/edit')%>
           <%= link_to('ログアウト','/users/logout', method: :post) %>
+          <%= link_to('ログアウトしたいんです', destroy_user_session_path, method: :delete) %>
         <% else %>
+          <%= link_to "ログインしたいよ", new_user_session_path %> <!-- ログイン画面に移行する -->
           <%= link_to('ログイン','/users/again') %>
           <%= link_to('新規登録','/users/new') %>
         <% end %>
