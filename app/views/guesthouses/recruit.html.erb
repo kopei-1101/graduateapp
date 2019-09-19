@@ -1,13 +1,14 @@
-<%= form_with  do |f| %>
-    <h3>写真</h3>
+<%= flash[:notice] %>
+<%= form_with url:("/guesthouses/create") do |f| %>
+    <h2>写真</h2>
     
-    <h3><p>住所</p>都道府県</h3>
+    <h2><i>住所</i><p>都道府県</p></h2>
         <%=f.select(:prefecture, Guesthouse.prefectures) %>
-    <h3>市区町村</h3>
-        <input name="city">
-    <h3>番地</h3>
-        <input name="address">
-    <h3>アピールポイント</h3>
-        <textarea name="appeal"></textarea>
+    <h2>市区町村</h2>
+        <input name="city" value="<%= @city %>" >
+    <h2>番地</h2>
+        <input name="address" value="<%= @eaddress %>" >
+    <h2>アピールポイント</h2>
+        <textarea name="appeal" value="<%= @appeal %>"></textarea>
     <input type='submit' value='投稿'>
 <% end %>

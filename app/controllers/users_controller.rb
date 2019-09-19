@@ -33,19 +33,6 @@ class UsersController < ApplicationController
         end
     end
 
-    def login
-        @user = User.where(email: params[:email], password: params[:password]).last
-        if @user
-            session[:user_id] = @user.id
-            flash[:notice] = "ログインしました"
-            redirect_to("/guesthouses/top")
-        else
-            flash[:notice]="メールアドレスまたはパスワードが間違っています"
-            @email = params[:email]
-            @password = params[:password]
-            render("users/again")
-        end
-    end
 
     def edit
         @user = User.find_by(
@@ -63,13 +50,6 @@ class UsersController < ApplicationController
         else
           render("users/edit")
         end
-    end
-
-
-    def logout
-        session[:user_id] = nil
-        flash[:notice] = "ログアウトしました"
-        redirect_to("/users/again")
     end
 
     def user_params

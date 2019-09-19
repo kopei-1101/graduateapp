@@ -1,5 +1,8 @@
 class Guesthouse < ApplicationRecord
     validates :appeal, {presence: true, length: {maximum: 140}}
+    validates :prefecture, {presence: true}
+    validates :address, {presence: true, uniqueness: true}
+    validates :city, {presence: true}
     mount_uploader :image, ImageUploader
     def self.prefectures
     [
