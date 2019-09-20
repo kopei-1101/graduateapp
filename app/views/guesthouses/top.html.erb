@@ -1,5 +1,6 @@
 <% @guesthouse.each do |guesthouse| %>
   <p>住所</p>
+  <p><%= image_tag guesthouse.image.thumb.url %></p>
   <%= guesthouse.prefecture %>
   <%= guesthouse.city %>
   <%= guesthouse.address %>

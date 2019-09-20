@@ -12,7 +12,8 @@ class GuesthousesController < ApplicationController
       city: params[:city],
       address: params[:address],
       appeal: params[:appeal],
-      prefecture: params[:prefecture]
+      prefecture: params[:prefecture],
+      image: params[:image]
       )
       if @guesthouse.save
         flash[:notice] ="募集中です"
@@ -24,6 +25,13 @@ class GuesthousesController < ApplicationController
         @appeal = params[:appeal]
         render("guesthouses/recruit")
       end
-  end
+
+    end
+
+    private
+
+    def user_params
+      params.require(:user).permit(:name, :description, :image)
+    end
 
 end
